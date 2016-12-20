@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?> 
+ <definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap12bind="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.xmlaccount.org/UniDocPerformList/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://www.xmlaccount.org/UniDocPerformList/" name="PaymentDocs" targetNamespace="http://www.xmlaccount.org/UniDocPerformList/">
+ <types>
+ <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xs1="http://www.xmlaccount.org/UniDocPerformList/" targetNamespace="http://www.xmlaccount.org/UniDocPerformList/" attributeFormDefault="unqualified" elementFormDefault="qualified">
+ <xs:complexType name="account">
+  <xs:attribute name="account_id" type="xs:int" use="required" /> 
+  <xs:attribute name="account_name" type="xs:string" use="required" /> 
+  </xs:complexType>
+ <xs:complexType name="actor">
+  <xs:attribute name="actor_id" type="xs:int" use="required" /> 
+  <xs:attribute name="actor_name" type="xs:string" use="required" /> 
+  </xs:complexType>
+ <xs:complexType name="base_doc">
+  <xs:attribute name="base_doc_id" type="xs:int" use="required" /> 
+  <xs:attribute name="base_doc_performance" type="xs:string" use="required" /> 
+  </xs:complexType>
+ <xs:complexType name="contract">
+  <xs:attribute name="contract_id" type="xs:int" use="required" /> 
+  <xs:attribute name="contract_name" type="xs:string" use="required" /> 
+  </xs:complexType>
+ <xs:complexType name="contragent">
+  <xs:attribute name="contagent_id" type="xs:int" use="required" /> 
+  <xs:attribute name="contragent_name" type="xs:string" use="required" /> 
+  </xs:complexType>
+ <xs:complexType name="currency">
+  <xs:attribute name="currency_id" type="xs:int" use="required" /> 
+  <xs:attribute name="currence_name" type="xs:string" use="required" /> 
+  <xs:attribute name="currency_exchange_rate" type="xs:float" use="required" /> 
+  </xs:complexType>
+ <xs:complexType name="doc_group_definition">
+  <xs:attribute name="doc_group_id" type="xs:int" use="required" /> 
+  <xs:attribute name="doc_group_name" type="xs:string" use="required" /> 
+  </xs:complexType>
+ <xs:complexType name="doc_type">
+ <xs:sequence>
+  <xs:element name="doc_type_single_representation" /> 
+  </xs:sequence>
+  <xs:attribute name="doc_type_id" type="xs:int" use="required" /> 
+  <xs:attribute name="doc_type_name" type="xs:string" use="required" /> 
+  </xs:complexType>
+ <xs:complexType name="importance_level">
+  <xs:attribute name="importance_level_id" type="xs:int" use="required" /> 
+  <xs:attribute name="importance_level_name" type="tns:importance_level_type" use="required" /> 
+  </xs:complexType>
+ <xs:simpleType name="importance_level_type">
+ <xs:restriction base="xs:string">
+  <xs:enumeration value="Обычная" /> 
+  <xs:enumeration value="Высокая" /> 
+  </xs:restriction>
+  </xs:simpleType>
+ <xs:complexType name="nomenclature_group">
+  <xs:attribute name="nomenclature_group_id" type="xs:int" use="required" /> 
+  <xs:attribute name="nomenclature_group_name" type="xs:string" use="required" /> 
+  </xs:complexType>
+ <xs:complexType name="order_type">
+  <xs:attribute name="order_type_id" type="xs:int" use="required" /> 
+  <xs:attribute name="order_type_name" type="xs:string" use="required" /> 
+  </xs:complexType>
+ <xs:complexType name="payment_form">
+  <xs:attribute name="payment_form_id" type="xs:int" use="required" /> 
+  <xs:attribute name="payment_form_name" type="tns:payment_form_type" use="required" /> 
+  </xs:complexType>
+ <xs:simpleType name="payment_form_type">
+ <xs:restriction base="xs:string">
+  <xs:enumeration value="Безналичные" /> 
+  <xs:enumeration value="Наличные" /> 
+  </xs:restriction>
+  </xs:simpleType>
+ <xs:complexType name="project">
+  <xs:attribute name="project_id" type="xs:int" use="required" /> 
+  <xs:attribute name="project_name" type="xs:string" use="required" /> 
+  </xs:complexType>
+ <xs:complexType name="scenary">
+  <xs:attribute name="scenary_id" use="required" /> 
+  <xs:attribute name="scenary_name" type="xs:string" use="required" /> 
+  </xs:complexType>
+ <xs:complexType name="season">
+  <xs:attribute name="season_id" type="xs:int" use="required" /> 
+  <xs:attribute name="season_name" type="xs:string" use="required" /> 
+  </xs:complexType>
+ <xs:complexType name="sel_doc">
+ <xs:sequence>
+  <xs:element name="doc_type" type="tns:doc_type" minOccurs="0" maxOccurs="unbounded" /> 
+  <xs:element name="doc_group_definition" type="tns:doc_group_definition" minOccurs="0" maxOccurs="unbounded" /> 
+  <xs:element name="payment_form" type="tns:payment_form" minOccurs="0" maxOccurs="unbounded" /> 
+  <xs:element name="doc_order_type" type="tns:order_type" minOccurs="0" maxOccurs="unbounded" /> 
+  <xs:element name="base_doc" type="tns:base_doc" minOccurs="0" maxOccurs="unbounded" /> 
+  <xs:element name="executor" type="tns:actor" minOccurs="0" maxOccurs="unbounded" /> 
+  <xs:element name="responsible_person" type="tns:actor" minOccurs="0" maxOccurs="unbounded" /> 
+  <xs:element name="organization" type="tns:contragent" minOccurs="0" maxOccurs="unbounded" /> 
+  <xs:element name="scenary" type="tns:scenary" minOccurs="0" maxOccurs="unbounded" /> 
+  <xs:element name="turn_account" type="tns:account" minOccurs="0" maxOccurs="unbounded" /> 
+  <xs:element name="importance_level" type="tns:importance_level" minOccurs="0" maxOccurs="unbounded" /> 
+  <xs:element name="project" type="tns:project" minOccurs="0" maxOccurs="unbounded" /> 
+  <xs:element name="nomenclature_group" type="tns:nomenclature_group" minOccurs="0" maxOccurs="unbounded" /> 
+  <xs:element name="contragent" type="tns:contragent" minOccurs="0" maxOccurs="unbounded" /> 
+  <xs:element name="contract" type="tns:contract" minOccurs="0" maxOccurs="unbounded" /> 
+  <xs:element name="charge_currency" type="tns:currency" minOccurs="0" maxOccurs="unbounded" /> 
+  <xs:element name="add_price_tax" type="tns:tax" minOccurs="0" maxOccurs="unbounded" /> 
+  <xs:element name="season" type="tns:season" minOccurs="0" maxOccurs="unbounded" /> 
+  </xs:sequence>
+  <xs:attribute name="doc_id" type="xs:int" /> 
+  <xs:attribute name="doc_name" type="xs:string" use="required" /> 
+  <xs:attribute name="doc_code" type="xs:string" use="required" /> 
+  <xs:attribute name="create_date" type="xs:dateTime" use="required" /> 
+  <xs:attribute name="statement_state" type="xs:int" use="required" /> 
+  <xs:attribute name="statement_date" type="xs:dateTime" use="required" /> 
+  <xs:attribute name="charge_date" type="xs:dateTime" use="required" /> 
+  <xs:attribute name="charge_max_date" type="xs:dateTime" use="required" /> 
+  <xs:attribute name="doc_summ" type="xs:double" use="required" /> 
+  <xs:attribute name="doc_summ_without_apt" type="xs:double" use="required" /> 
+  </xs:complexType>
+ <xs:complexType name="sel_docs_list">
+ <xs:sequence>
+  <xs:element name="sel_doc" type="tns:sel_doc" nillable="true" minOccurs="0" maxOccurs="unbounded" /> 
+  </xs:sequence>
+  <xs:attribute name="docs_count" type="xs:int" use="required" /> 
+  </xs:complexType>
+ <xs:complexType name="tax">
+  <xs:attribute name="taxe_id" type="xs:int" use="required" /> 
+  <xs:attribute name="taxe_name" type="xs:string" use="required" /> 
+  <xs:attribute name="taxe_abs_value" type="xs:double" use="required" /> 
+  </xs:complexType>
+ <xs:element name="getPaymentDocs">
+ <xs:complexType>
+  <xs:sequence /> 
+  </xs:complexType>
+  </xs:element>
+ <xs:element name="getPaymentDocsResponse">
+ <xs:complexType>
+ <xs:sequence>
+  <xs:element name="return" type="tns:sel_docs_list" nillable="true" /> 
+  </xs:sequence>
+  </xs:complexType>
+  </xs:element>
+  </xs:schema>
+  </types>
+ <message name="getPaymentDocsRequestMessage">
+  <part name="parameters" element="tns:getPaymentDocs" /> 
+  </message>
+ <message name="getPaymentDocsResponseMessage">
+  <part name="parameters" element="tns:getPaymentDocsResponse" /> 
+  </message>
+ <portType name="PaymentDocsPortType">
+ <operation name="getPaymentDocs">
+  <input message="tns:getPaymentDocsRequestMessage" /> 
+  <output message="tns:getPaymentDocsResponseMessage" /> 
+  </operation>
+  </portType>
+ <binding name="PaymentDocsSoapBinding" type="tns:PaymentDocsPortType">
+  <soapbind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" /> 
+ <operation name="getPaymentDocs">
+  <soapbind:operation style="document" /> 
+ <input>
+  <soapbind:body use="literal" /> 
+  </input>
+ <output>
+  <soapbind:body use="literal" /> 
+  </output>
+  </operation>
+  </binding>
+ <binding name="PaymentDocsSoap12Binding" type="tns:PaymentDocsPortType">
+  <soap12bind:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" /> 
+ <operation name="getPaymentDocs">
+  <soap12bind:operation style="document" /> 
+ <input>
+  <soap12bind:body use="literal" /> 
+  </input>
+ <output>
+  <soap12bind:body use="literal" /> 
+  </output>
+  </operation>
+  </binding>
+ <service name="PaymentDocs">
+ <port name="PaymentDocsSoap" binding="tns:PaymentDocsSoapBinding">
+ <documentation>
+  <wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" conformsTo="http://ws-i.org/profiles/basic/1.1" /> 
+  </documentation>
+  <soapbind:address location="http://localhost/FinansDemo/ws/PaymentDocs/getPaymentDoc" /> 
+  </port>
+ <port name="PaymentDocsSoap12" binding="tns:PaymentDocsSoap12Binding">
+  <soap12bind:address location="http://localhost/FinansDemo/ws/PaymentDocs/getPaymentDoc" /> 
+  </port>
+  </service>
+  </definitions>

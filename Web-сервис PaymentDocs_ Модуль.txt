@@ -1,0 +1,5 @@
+﻿Функция getPaymentDocs(user_login, operation_type, before_date, after_date, has_status, no_has_status, start_position, packet_capacity, doc_type_id, last_datetime, last_uuid)
+	// Вставить содержимое обработчика.
+	Возврат ПолучитьДанныеПоЗаявкамНаРасходованиеСредств(user_login, operation_type, before_date, after_date, has_status, no_has_status, start_position, packet_capacity, doc_type_id, last_datetime, last_uuid);
+КонецФункции
+

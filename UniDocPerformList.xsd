@@ -1,0 +1,196 @@
+﻿<xs:schema xmlns:tns="http://www.xmlaccount.org/UniDocPerformList/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.xmlaccount.org/UniDocPerformList/" attributeFormDefault="unqualified" elementFormDefault="qualified">
+	<xs:complexType name="account">
+		<xs:attribute name="account_id" type="xs:int"/>
+		<xs:attribute name="account_name" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="actor">
+		<xs:attribute name="actor_id" type="xs:int"/>
+		<xs:attribute name="actor_name" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="base_doc">
+		<xs:attribute name="base_doc_id" type="xs:int"/>
+		<xs:attribute name="base_doc_performance" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="contract">
+		<xs:attribute name="contract_id" type="xs:int"/>
+		<xs:attribute name="contract_name" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="contragent">
+		<xs:attribute name="contagent_id" type="xs:int"/>
+		<xs:attribute name="contragent_name" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="curr_user_info">
+		<xs:attribute name="login" type="xs:string"/>
+		<xs:attribute name="person_name" type="xs:string"/>
+		<xs:attribute name="post" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="currency">
+		<xs:attribute name="currency_id" type="xs:int"/>
+		<xs:attribute name="currency_name" type="xs:string"/>
+		<xs:attribute name="currency_exchange_rate" type="xs:float"/>
+	</xs:complexType>
+	<xs:complexType name="doc_group_definition">
+		<xs:attribute name="doc_group_id" type="xs:int"/>
+		<xs:attribute name="doc_group_name" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="doc_type">
+		<xs:attribute name="doc_type_id" type="xs:int"/>
+		<xs:attribute name="doc_type_name" type="xs:string"/>
+		<xs:attribute name="doc_type_single_representation" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="importance_level">
+		<xs:attribute name="importance_level_id" type="xs:int"/>
+		<xs:attribute name="importance_level_name" type="xs:string"/>
+	</xs:complexType>
+	<xs:simpleType name="importance_level_type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Обычная"/>
+			<xs:enumeration value="Высокая"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="include_docs_list">
+		<xs:sequence>
+			<xs:element name="include_doc" type="tns:sel_doc" nillable="true" minOccurs="0" maxOccurs="500"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="indicator">
+		<xs:attribute name="indicator_name" type="xs:string"/>
+		<xs:attribute name="counter" type="xs:int"/>
+		<xs:attribute name="message" type="xs:string"/>
+		<xs:attribute name="comment" type="xs:string"/>
+		<xs:attribute name="min_date" type="xs:dateTime"/>
+		<xs:attribute name="max_date" type="xs:dateTime"/>
+	</xs:complexType>
+	<xs:complexType name="indicator_list">
+		<xs:sequence>
+			<xs:element name="indicator" type="tns:indicator" nillable="true" minOccurs="0" maxOccurs="100"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="logical_result">
+		<xs:attribute name="result_text" type="xs:string"/>
+		<xs:attribute name="logical_value" type="xs:string"/>
+		<xs:attribute name="comment" type="xs:string"/>
+		<xs:attribute name="doc_id" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="metodXMLResult">
+		<xs:sequence>
+			<xs:element name="any_data" nillable="true"/>
+			<xs:element name="doc_list" type="tns:sel_docs_list" nillable="true"/>
+			<xs:element name="success_value" type="tns:logical_result" nillable="true" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="last_uuid" type="xs:string"/>
+		<xs:attribute name="last_datetime" type="xs:dateTime"/>
+	</xs:complexType>
+	<xs:complexType name="nomenclature_group">
+		<xs:attribute name="nomenclature_group_id" type="xs:int"/>
+		<xs:attribute name="nomenclature_group_name" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="order_type">
+		<xs:attribute name="order_type_id" type="xs:int"/>
+		<xs:attribute name="order_type_name" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="payment_form">
+		<xs:attribute name="payment_form_id" type="xs:int"/>
+		<xs:attribute name="payment_form_name" type="xs:string"/>
+	</xs:complexType>
+	<xs:simpleType name="payment_form_type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Безналичные"/>
+			<xs:enumeration value="Наличные"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="project">
+		<xs:attribute name="project_id" type="xs:int"/>
+		<xs:attribute name="project_name" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="relative_entity">
+		<xs:attribute name="entity_id" type="xs:int"/>
+		<xs:attribute name="entity_name" type="xs:string"/>
+		<xs:attribute name="entity_performance" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="scenary">
+		<xs:attribute name="scenary_id" type="xs:int"/>
+		<xs:attribute name="scenary_name" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="season">
+		<xs:attribute name="season_id" type="xs:int"/>
+		<xs:attribute name="season_name" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="sel_doc">
+		<xs:sequence>
+			<xs:element name="doc_type" type="tns:doc_type" nillable="true" minOccurs="0"/>
+			<xs:element name="doc_group_definition" type="tns:doc_group_definition" nillable="true" minOccurs="0"/>
+			<xs:element name="payment_form" type="tns:payment_form" nillable="true" minOccurs="0"/>
+			<xs:element name="doc_order_type" type="tns:order_type" nillable="true" minOccurs="0"/>
+			<xs:element name="base_doc" type="tns:base_doc" nillable="true" minOccurs="0"/>
+			<xs:element name="executor" type="tns:actor" nillable="true" minOccurs="0"/>
+			<xs:element name="responsible_person" type="tns:actor" nillable="true" minOccurs="0"/>
+			<xs:element name="organization" type="tns:contragent" nillable="true" minOccurs="0"/>
+			<xs:element name="scenary" type="tns:scenary" nillable="true" minOccurs="0"/>
+			<xs:element name="turn_account" type="tns:account" nillable="true" minOccurs="0"/>
+			<xs:element name="importance_level" type="tns:importance_level" nillable="true" minOccurs="0"/>
+			<xs:element name="project" type="tns:project" nillable="true" minOccurs="0"/>
+			<xs:element name="nomenclature_group" type="tns:nomenclature_group" nillable="true" minOccurs="0"/>
+			<xs:element name="contragent" type="tns:contragent" nillable="true" minOccurs="0"/>
+			<xs:element name="contract" type="tns:contract" nillable="true" minOccurs="0"/>
+			<xs:element name="charge_currency" type="tns:currency" nillable="true" minOccurs="0"/>
+			<xs:element name="add_price_tax" type="tns:tax" nillable="true" minOccurs="0"/>
+			<xs:element name="season" type="tns:season" nillable="true" minOccurs="0"/>
+			<xs:element name="cfo" type="tns:contragent" nillable="true" minOccurs="0"/>
+			<xs:element name="statement_list" type="tns:statement_list" nillable="true" minOccurs="0"/>
+			<xs:element name="payment_doc_list" type="tns:include_docs_list" nillable="true" minOccurs="0"/>
+			<xs:element name="success_value" type="tns:logical_result" nillable="true" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="doc_id" type="xs:string"/>
+		<xs:attribute name="doc_name" type="xs:string"/>
+		<xs:attribute name="doc_code" type="xs:string"/>
+		<xs:attribute name="create_date" type="xs:dateTime"/>
+		<xs:attribute name="statement_state" type="xs:string"/>
+		<xs:attribute name="statement_date" type="xs:dateTime"/>
+		<xs:attribute name="charge_date" type="xs:dateTime"/>
+		<xs:attribute name="charge_max_date" type="xs:dateTime"/>
+		<xs:attribute name="doc_summ" type="xs:double"/>
+		<xs:attribute name="doc_summ_without_apt" type="xs:double"/>
+		<xs:attribute name="doc_type_id" type="xs:int" use="required"/>
+		<xs:attribute name="enable_statement_set" type="xs:boolean"/>
+		<xs:attribute name="comment" type="xs:string"/>
+		<xs:attribute name="list_index" type="xs:int"/>
+		<xs:attribute name="over_budget" type="xs:boolean"/>
+		<xs:attribute name="no_include_in_pay_plan" type="xs:boolean"/>
+		<xs:attribute name="is_exchequer" type="xs:boolean"/>
+		<xs:attribute name="org_name" type="xs:string"/>
+		<xs:attribute name="curr_name" type="xs:string"/>
+		<xs:attribute name="payment_form_name" type="xs:string"/>
+		<xs:attribute name="bank_account" type="xs:string"/>
+		<xs:attribute name="pay_target" type="xs:string"/>
+		<xs:attribute name="pay_target_manage" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="sel_docs_list">
+		<xs:sequence>
+			<xs:element name="sel_doc" type="tns:sel_doc" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="curr_user_info" type="tns:curr_user_info" nillable="true" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="docs_count" type="xs:int"/>
+	</xs:complexType>
+	<xs:complexType name="statement_item">
+		<xs:attribute name="vise" type="xs:string"/>
+		<xs:attribute name="post" type="xs:string"/>
+		<xs:attribute name="person_names" type="xs:string"/>
+		<xs:attribute name="solution" type="xs:string"/>
+		<xs:attribute name="statement_actor" type="xs:string"/>
+		<xs:attribute name="set_date" type="xs:dateTime"/>
+		<xs:attribute name="set_max_date" type="xs:dateTime"/>
+		<xs:attribute name="comment" type="xs:string"/>
+		<xs:attribute name="is_manual" type="xs:boolean"/>
+	</xs:complexType>
+	<xs:complexType name="statement_list">
+		<xs:sequence>
+			<xs:element name="statement_item" type="tns:statement_item" nillable="true" minOccurs="0" maxOccurs="100"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tax">
+		<xs:attribute name="taxe_id" type="xs:int"/>
+		<xs:attribute name="taxe_name" type="xs:string"/>
+		<xs:attribute name="taxe_abs_value" type="xs:double"/>
+	</xs:complexType>
+</xs:schema>

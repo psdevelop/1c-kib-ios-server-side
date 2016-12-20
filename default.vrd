@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<point xmlns="http://v8.1c.ru/8.2/virtual-resource-system"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		base="/FinansDemo"
+		ib="File=&quot;C:\Documents and Settings\ADMIN\Мои документы\BIT\FinansDemo&quot;;">
+	<ws>
+		<point name="PaymentDocs"
+				alias="wsPaymentDocs.1cws"/>
+		<point name="GetCurrentUserInfo"
+				alias="wsGetCurrentUserInfo.1cws"/>
+		<point name="SetDocProperties"
+				alias="wsSetDocProperties.1cws"/>
+	</ws>
+</point>

@@ -1,0 +1,4 @@
+﻿Функция setDocStatement(doc_id, status_value, user_login, manipulation_type, doc_type_id)
+	// Вставить содержимое обработчика.
+	Возврат УдаленноЗаписатьОбъект(doc_id, status_value, user_login, manipulation_type, doc_type_id);
+КонецФункции

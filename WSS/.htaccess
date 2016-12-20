@@ -1,0 +1,4 @@
+AuthUserFile C:/www/tm/WSS/.htpasswd
+AuthName "Members Only Area"
+AuthType Basic
+Require valid-user
